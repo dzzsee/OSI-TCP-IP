@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Guia completa de los modelos OSI y TCP/IP, protocolos, encapsulacion, direccionamiento y seguridad.">
+  <title>OSI & TCP/IP — Guia completa</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio">
+      <span class="brand-mark">OI</span>
+      <span><strong>OSI</strong><small>TCP / IP</small></span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav">☰</button>
+    <nav id="nav" aria-label="Navegacion principal">
+      <a href="#conceptos">Conceptos</a>
+      <a href="#osi">Modelo OSI</a>
+      <a href="#tcpip">TCP/IP</a>
+      <a href="#procesos">Procesos</a>
+      <a href="#seguridad">Seguridad</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Arquitectura de redes · Guia interactiva</p>
+        <h1>Entiende como viajan los datos</h1>
+        <p class="lead">Desde la señal fisica hasta la aplicacion: una referencia visual, comparada y practica de los modelos OSI y TCP/IP.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#osi">Explorar el modelo OSI</a>
+          <button class="button ghost" id="openChat" type="button">Preguntar al asistente</button>
+        </div>
+      </div>
+      <div class="packet-demo" aria-label="Animacion de encapsulacion de datos">
+        <div class="packet ring-1"></div><div class="packet ring-2"></div>
+        <div class="packet-core">
+          <span>DATOS</span>
+          <strong>HTTP</strong>
+          <small>TCP · IP · ETH</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="conceptos" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Fundamentos</p>
+        <h2>Dos modelos, una idea comun</h2>
+        <p>Los modelos separan las responsabilidades de red en capas. Cada una ofrece servicios a la superior y oculta detalles de las inferiores.</p>
+      </div>
+      <div class="comparison">
+        <article class="model-card">
+          <span class="card-index">01</span>
+          <h3>Modelo OSI</h3>
+          <p>Modelo teorico de referencia creado por ISO. Divide la comunicacion en <strong>7 capas</strong> y facilita el diseño, diagnostico y enseñanza.</p>
+          <div class="mini-stack osi-mini">
+            <span>7 Aplicacion</span><span>6 Presentacion</span><span>5 Sesion</span><span>4 Transporte</span><span>3 Red</span><span>2 Enlace</span><span>1 Fisica</span>
+          </div>
+        </article>
+        <article class="model-card featured">
+          <span class="card-index">02</span>
+          <h3>Modelo TCP/IP</h3>
+          <p>Modelo practico que describe Internet. Agrupa funciones en <strong>4 capas</strong> y esta construido sobre protocolos que se usan en la realidad.</p>
+          <div class="mini-stack tcp-mini">
+            <span>4 Aplicacion</span><span>3 Transporte</span><span>2 Internet</span><span>1 Acceso a red</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="osi" class="section wide">
+      <div class="section-heading">
+        <p class="eyebrow">Modelo OSI</p>
+        <h2>Las 7 capas explicadas</h2>
+      </div>
+      <div class="layer-grid" id="layerGrid"></div>
+    </section>
+
+    <section id="tcpip" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Modelo TCP/IP</p>
+        <h2>El modelo que mueve Internet</h2>
+      </div>
+      <div class="tcp-grid">
+        <article><span>4</span><h3>Aplicacion</h3><p>Interaccion con servicios y datos.</p><code>HTTP · DNS · SMTP · SSH · DHCP</code></article>
+        <article><span>3</span><h3>Transporte</h3><p>Entrega entre procesos y puertos.</p><code>TCP · UDP · SCTP</code></article>
+        <article><span>2</span><h3>Internet</h3><p>Direccionamiento y encaminamiento.</p><code>IP · ICMP · ARP · IPsec</code></article>
+        <article><span>1</span><h3>Acceso a red</h3><p>Enlace local y transmision fisica.</p><code>Ethernet · Wi-Fi · PPP</code></article>
+      </div>
+    </section>
+
+    <section id="procesos" class="section wide">
+      <div class="section-heading">
+        <p class="eyebrow">Flujo de datos</p>
+        <h2>Que ocurre cuando cargas una web</h2>
+      </div>
+      <div class="timeline">
+        <article><b>01</b><h3>Resolucion DNS</h3><p>El nombre se convierte en una direccion IP mediante resolutores DNS.</p></article>
+        <article><b>02</b><h3>Conexion TCP</h3><p>Cliente y servidor completan el handshake de tres vias.</p></article>
+        <article><b>03</b><h3>Cifrado TLS</h3><p>Se negocian claves y se autentica el servidor antes de enviar datos sensibles.</p></article>
+        <article><b>04</b><h3>Peticion HTTP</h3><p>El navegador solicita el recurso y el servidor genera una respuesta.</p></article>
+        <article><b>05</b><h3>IP y Ethernet</h3><p>Los segmentos se encapsulan y se encaminan hasta el destino.</p></article>
+      </div>
+
+      <div class="encapsulation">
+        <h3>Encapsulacion y desencapsulacion</h3>
+        <div class="capsule-row">
+          <div><span>Aplicacion</span><b>Datos</b></div><i>→</i>
+          <div><span>Transporte</span><b>Segmento</b></div><i>→</i>
+          <div><span>Internet</span><b>Paquete</b></div><i>→</i>
+          <div><span>Red</span><b>Trama</b></div><i>→</i>
+          <div><span>Fisica</span><b>Bits</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="seguridad" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Seguridad y diagnostico</p>
+        <h2>Piensa de arriba hacia abajo</h2>
+      </div>
+      <div class="security-grid">
+        <article><h3>DNS no resuelve</h3><p>Comprueba `/etc/resolv.conf`, el servidor recursivo y registros A/AAAA. Prueba `nslookup` o `dig`.</p></article>
+        <article><h3>No hay conectividad IP</h3><p>Verifica direccion, mascara, puerta de enlace y tabla de rutas con `ip addr` e `ip route`.</p></article>
+        <article><h3>TCP rechaza o agota tiempo</h3><p>Usa `ping`, revisa puertos con `ss`, reglas de firewall y captura trafico con `tcpdump` o Wireshark.</p></article>
+        <article><h3>HTTPS falla</h3><p>Comprueba certificados, hora del sistema, nombre del dominio, TLS y proxies intermedios.</p></article>
+      </div>
+    </section>
+
+    <section class="glossary section" id="glosario">
+      <div class="section-heading"><p class="eyebrow">Referencia rapida</p><h2>Conceptos clave</h2></div>
+      <div class="terms">
+        <button type="button" data-term="TCP es un protocolo orientado a conexion que garantiza entrega, orden y control de flujo mediante reconocimiento y retransmision."><strong>TCP</strong><span>Conexion fiable</span></button>
+        <button type="button" data-term="UDP es un protocolo sin conexion y sin garantias de entrega. Es ligero y se usa en DNS, VoIP, streaming y juegos."><strong>UDP</strong><span>Entrega rapida</span></button>
+        <button type="button" data-term="Un puerto identifica una aplicacion o servicio dentro de un host. TCP y UDP usan espacios de puertos separados de 16 bits."><strong>Puerto</strong><span>Endpoint de proceso</span></button>
+        <button type="button" data-term="NAT traduce direcciones y puertos. Permite que varias redes privadas compartan una direccion publica."><strong>NAT</strong><span>Traduccion de red</span></button>
+        <button type="button" data-term="Una subnet divide una red mediante una mascara o prefijo CIDR para separar rangos de direcciones."><strong>Subnet</strong><span>Segmentacion IP</span></button>
+        <button type="button" data-term="MTU es el tamaño maximo de carga util de una trama o enlace. Los paquetes mayores pueden fragmentarse o provocar errores de descubrimiento de ruta."><strong>MTU</strong><span>Tamaño maximo</span></button>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-fab" id="chatFab" type="button" aria-label="Abrir asistente IA">IA</button>
+  <aside class="chat-panel" id="chatPanel" aria-label="Asistente de IA" aria-hidden="true">
+    <header>
+      <div><span class="status-dot"></span><div><strong>Asistente OSI/TCP-IP</strong><small>Impulsado por NVIDIA</small></div></div>
+      <button id="closeChat" type="button" aria-label="Cerrar">×</button>
+    </header>
+    <div class="chat-messages" id="chatMessages">
+      <div class="message assistant">Hola. Puedo explicar capas, protocolos, direccionamiento, encapsulacion y ayudarte a diagnosticar una red.</div>
+    </div>
+    <div class="chat-key" id="chatKey">
+      <input id="apiKey" type="password" autocomplete="off" placeholder="NVIDIA API key">
+      <button id="saveKey" type="button">Guardar</button>
+    </div>
+    <form class="chat-form" id="chatForm">
+      <input id="chatInput" autocomplete="off" placeholder="Escribe tu pregunta..." aria-label="Pregunta">
+      <button type="submit" aria-label="Enviar">➤</button>
+    </form>
+  </aside>
+
+  <footer>
+    <div class="brand"><span class="brand-mark">OI</span><span><strong>OSI</strong><small>TCP / IP</small></span></div>
+    <p>Referencia educativa · HTTP · TCP · IP · Ethernet</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
